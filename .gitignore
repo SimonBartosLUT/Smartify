@@ -7,6 +7,9 @@ backend/.env
 frontend/.env
 .env
 
+# Deployment/secrets artifacts
+backend/.deployed
+
 # IDE project files
 .idea
 .vscode/
