@@ -2,7 +2,7 @@ import React from "react";
 import "./Preview.css";
 import {useNavigate} from "react-router-dom";
 
-const PlanPage = ({ plan, id }) => {
+const PlanPage = ({ plan, id, setPlan}) => {
     const navigate = useNavigate();
 
     const saveFunction = async () => {
@@ -21,7 +21,8 @@ const PlanPage = ({ plan, id }) => {
                 },
                 body: JSON.stringify(newPlan),
             });
-
+            setPlan(null)
+            navigate('/plan-page')
             if (!res.ok) {
                 console.error("Failed to save plan");
             } else {
@@ -32,7 +33,7 @@ const PlanPage = ({ plan, id }) => {
         }
     };
     const reworkPlan = async () =>{
-        navigate("/")
+        navigate("/create")
     }
     if (!plan) {
         return <div className="plan-page">No plan data available.</div>;

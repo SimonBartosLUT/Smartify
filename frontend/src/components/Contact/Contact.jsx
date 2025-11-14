@@ -10,7 +10,7 @@ function Contact() {
       </p>
 
       <div className="contact-info">
-        <p><strong>Email:</strong> smartify@gmail.com</p>
+        <p><strong>Email:</strong> smartify.coach@gmail.com</p>
         <p><strong>Phone:</strong> +358 45 678 9123</p>
         <p><strong>Location:</strong> Lahti, Finland</p>
       </div>

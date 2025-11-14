@@ -45,9 +45,8 @@ function Login({setId}) {
       setUser(data.user);
       setId(data.user._id);
       console.log("plans loaded")
-      navigate("/preview")
       formEl.reset();
-      navigate("/"); // redirect after login
+      navigate("/plan-page"); // redirect after login
     } catch (err) {
       setError(err.message || "Something went wrong");
     } finally {

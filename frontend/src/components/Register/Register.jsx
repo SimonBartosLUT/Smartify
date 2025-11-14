@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useAuth } from "../../context/authContext.jsx";
 
-export default function Register() {
+export default function Register({setId}) {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -54,10 +54,10 @@ export default function Register() {
 
     // Save user in context so navbar updates immediately
     setUser(data.user);
-
+    setId(data.user._id);
     // ✅ Use the saved element (not e.currentTarget)
     formEl.reset();
-    navigate("/");
+    navigate("/create");
   } catch (err) {
     setError(err.message || "Something went wrong.");
   } finally {

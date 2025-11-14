@@ -16,34 +16,42 @@ import Contact from "./components/Contact/Contact.jsx";
 import UserForm from "./components/UserForm/UserForm.jsx";
 import Preview from "./components/Preview/Preview.jsx";
 import {useEffect, useState} from "react";
+import {useAuth} from "./context/authContext.jsx";
 
 
 const App = () => {
     const [plan, setPlan] = useState(null);
     const [plans, setPlans] = useState([])
     const [id, setId] = useState(null);
+    const { user } = useAuth();
     useEffect(() => {
-        if (id != null) {
-            const loadPlans = async () => {
-                console.log(id)
-                const res = await fetch("http://localhost:8000/api/loadPlan", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({userId: id}),
-                });
+        if(!user){
+            setPlans([])
+            setId(null)
+        }
+    }, [user]);
+    useEffect(() => {
+        const loadPlans = async () => {
+            console.log(id)
+            const res = await fetch("http://localhost:8000/api/loadPlan", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({userId: id}),
+            });
 
 
-                if (!res.ok) {
-                    throw new Error('Request failed: ' + res.status);
-                }
-                const rawPlans = await res.json()
-                setPlans(rawPlans)
+            if (!res.ok) {
+                throw new Error('Request failed: ' + res.status);
             }
+            const rawPlans = await res.json()
+            setPlans(rawPlans)
+        }
+        if (id != null) {
             loadPlans()
         }
-    }, [id])
+    }, [id, plan])
     useEffect(() => {
         console.log("Id has changed")
         console.log(id)
@@ -51,12 +59,12 @@ const App = () => {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <Route path='/' element={<Layout setId={setId} plans={plans} />}>
-                <Route index element={<UserForm setPlan={setPlan} />} />
+                <Route index element={<About />} />
+                <Route path='/create' element={<UserForm setPlan={setPlan} />} />
                 <Route path='/login' element={<Login setId={setId}/>} />
                 <Route path='/plan-page' element={<PlanPage plans={plans}/>} />
-                <Route path='/preview' element={<Preview plan={plan} id={id} />} />
-                <Route path='/register' element={<Register/>}/>
-                <Route path='/about' element={<About />} />
+                <Route path='/preview' element={<Preview plan={plan} id={id} setPlan={setPlan}/>} />
+                <Route path='/register' element={<Register setId={setId}/>}/>
                 <Route path='/contact' element={<Contact />} />
             </Route>
         )

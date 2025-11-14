@@ -7,7 +7,7 @@ function Footer() {
     <footer className="footer">
       <p>© 2025 MyCourses. All rights reserved.</p>
       <ul className="footer-links">
-        <li><NavLink to="/about">About</NavLink></li>
+        <li><NavLink to="/">About</NavLink></li>
         <li><NavLink to="/contact">Contact</NavLink></li>
       </ul>
     </footer>

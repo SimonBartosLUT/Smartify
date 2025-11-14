@@ -40,7 +40,7 @@ function Header({setId, plan}) {
           </li>
 
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/create">Create</NavLink>
           </li>
 
           {/* only show Login / Register if NOT logged in */}
