@@ -33,7 +33,7 @@ const App = () => {
     useEffect(() => {
         const loadPlans = async () => {
             console.log(id)
-            const res = await fetch("http://localhost:8000/api/loadPlan", {
+            const res = await fetch("/api/loadPlan", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

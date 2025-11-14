@@ -24,7 +24,7 @@ const UserForm = ({setPlan}) => {
             userPreference
         };
         console.log(JSON.stringify(inputData))
-        const res = await fetch("http://localhost:8000/api/getPlan", {method: 'POST',
+        const res = await fetch("/api/getPlan", {method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },

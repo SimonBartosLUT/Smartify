@@ -10,7 +10,7 @@ function Login({setId}) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const API = import.meta.env.VITE_API_URL || "http://localhost:8000";
+  // const API = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -25,7 +25,7 @@ function Login({setId}) {
     };
 
     try {
-      const res = await fetch(`${API}/api/auth/login`, {
+      const res = await fetch(`/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include", // needed for httpOnly cookie

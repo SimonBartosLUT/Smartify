@@ -14,7 +14,7 @@ const PlanPage = ({ plan, id, setPlan}) => {
         }
         const newPlan = { ...plan, userId: id }; // note: userID if your schema expects that!
         try {
-            const res = await fetch("http://localhost:8000/api/savePlan", {
+            const res = await fetch("/api/savePlan", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

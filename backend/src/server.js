@@ -8,7 +8,7 @@ const app = express();
 connctDB()
 
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "*",
   credentials: true,
 }));
 
@@ -25,5 +25,3 @@ app.listen(8000, () => console.log(`Server is running on port 8000`));
 
 
 
-
-//mongodb+srv://smartifycoach_db_user:KFYnumNLtU9aBOzT@smartifycoach.nespqww.mongodb.net/?appName=SmartifyCoach
